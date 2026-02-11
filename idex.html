@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bene Grill | Restaurante Self-Service</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,9 +12,9 @@
   <style>
     :root {
       --orange: #E46A1A;
-      --black: #0F0F0F;
-      --gray: #F4F4F4;
-      --white: #FFFFFF;
+      --black: #111;
+      --gray: #f5f5f5;
+      --white: #fff;
     }
 
     * {
@@ -31,19 +31,19 @@
 
     header {
       background: var(--white);
-      padding: 16px 40px;
+      padding: 15px 40px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
       flex-wrap: wrap;
     }
 
     header img {
-      height: 50px;
+      height: 55px;
     }
 
     nav {
@@ -64,31 +64,33 @@
     }
 
     .btn {
-      background: var(--orange);
-      color: var(--white);
-      padding: 10px 20px;
-      border-radius: 6px;
+      background: linear-gradient(135deg, #E46A1A, #c75100);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
       transition: 0.3s;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.2);
       display: inline-block;
     }
 
     .btn:hover {
-      opacity: 0.85;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     }
 
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
                   url('picanha_benegrill.png') center/cover no-repeat;
-      color: var(--white);
-      padding: 120px 20px;
+      color: white;
       text-align: center;
+      padding: 130px 20px;
     }
 
     .hero h1 {
-      font-size: 40px;
-      margin-bottom: 16px;
+      font-size: 42px;
+      margin-bottom: 15px;
     }
 
     .hero p {
@@ -110,23 +112,24 @@
       align-items: center;
     }
 
-    .about h2 {
-      color: var(--orange);
-      margin-bottom: 16px;
-    }
-
     .about img {
       width: 100%;
-      border-radius: 12px;
+      border-radius: 15px;
+    }
+
+    .about h2 {
+      color: var(--orange);
+      margin-bottom: 15px;
     }
 
     .contact {
-      background: var(--white);
-      border-radius: 16px;
+      background: white;
+      border-radius: 20px;
       padding: 40px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 40px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     }
 
     .contact h2 {
@@ -134,25 +137,52 @@
       margin-bottom: 20px;
     }
 
-    .contact-info p {
-      margin-bottom: 12px;
-    }
-
     .delivery a {
       display: block;
-      margin-bottom: 16px;
+      margin-bottom: 15px;
       text-align: center;
     }
 
     footer {
       background: var(--black);
-      color: var(--white);
+      color: white;
       text-align: center;
-      padding: 20px;
+      padding: 25px;
       margin-top: 80px;
     }
 
-    /* RESPONSIVIDADE */
+    /* Animação */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 0.8s ease;
+    }
+
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Botão WhatsApp */
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      padding: 15px 18px;
+      border-radius: 50%;
+      font-size: 22px;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+
+    .whatsapp:hover {
+      transform: scale(1.1);
+    }
+
+    /* RESPONSIVO */
     @media (max-width: 768px) {
 
       header {
@@ -165,16 +195,13 @@
         font-size: 28px;
       }
 
-      .hero p {
-        font-size: 16px;
-      }
-
-      .about {
-        grid-template-columns: 1fr;
-      }
-
+      .about,
       .contact {
         grid-template-columns: 1fr;
+      }
+
+      .hero .btn {
+        width: 90%;
       }
     }
   </style>
@@ -182,53 +209,70 @@
 
 <body>
 
-  <header>
-    <img src="benegrill_logo.png" alt="Logo Bene Grill">
-    <nav>
-      <a href="#">Início</a>
-      <a href="#sobre">Quem Somos</a>
-      <a href="#contato">Contato</a>
-    </nav>
-    <a href="#delivery" class="btn">Peça Online</a>
-  </header>
+<header>
+  <img src="benegrill_logo.png" alt="Logo Bene Grill">
+  <nav>
+    <a href="#">Início</a>
+    <a href="#sobre">Quem Somos</a>
+    <a href="#contato">Contato</a>
+  </nav>
+  <a href="#delivery" class="btn">Peça Online</a>
+</header>
 
-  <section class="hero">
-    <h1>Restaurante Self-Service com Sabor de Churrasco</h1>
-    <p>Variedade, qualidade e aquele gostinho de churrasco que só o Bene Grill tem.</p>
-    <a href="https://www.ifood.com.br/delivery/camacari-ba/bene-grill-parque-florestal/11d9b113-8daa-47c7-aa6c-2f6b1b6ffab7" class="btn">Peça pelo iFood</a>
-  </section>
+<section class="hero fade-up">
+  <h1>Self-Service com Sabor de Churrasco</h1>
+  <p>Variedade, qualidade e aquele gostinho de churrasco que só o Bene Grill tem.</p>
+  <a href="https://www.ifood.com.br/" class="btn">Peça pelo iFood</a>
+</section>
 
-  <section id="sobre" class="about">
-    <div>
-      <h2>Quem Somos</h2>
-      <p>
-        O Bene Grill nasceu da paixão pelo churrasco e pela culinária brasileira.
-        Nosso objetivo é oferecer um ambiente acolhedor e um self-service completo,
-        com pratos preparados diariamente com ingredientes frescos e selecionados.
-      </p>
-    </div>
-    <img src="restaurante.webp" alt="Imagem do restaurante">
-  </section>
+<section id="sobre" class="about fade-up">
+  <div>
+    <h2>Quem Somos</h2>
+    <p>
+      O Bene Grill nasceu da paixão pelo churrasco e pela culinária brasileira.
+      Oferecemos um ambiente acolhedor com um self-service completo,
+      sempre com ingredientes frescos e selecionados.
+    </p>
+  </div>
+  <img src="restaurante.webp" alt="Imagem do restaurante">
+</section>
 
-  <section id="contato" class="contact">
-    <div class="contact-info">
-      <h2>Contato</h2>
-      <p>📞 (71) 99695-6712</p>
-      <p>📍 Av. Florestal, 369 - Parque Florestal, Camaçari – BA</p>
-      <p>🕒 Seg a Sex – 11h às 15h</p>
-      <p>🕒 Sáb e Dom – 11h às 15h30</p>
-    </div>
+<section id="contato" class="contact fade-up">
+  <div>
+    <h2>Contato</h2>
+    <p>📞 (71) 99695-6712</p>
+    <p>📍 Av. Florestal, 369 - Parque Florestal, Camaçari – BA</p>
+    <p>🕒 Seg a Sex – 11h às 15h</p>
+    <p>🕒 Sáb e Dom – 11h às 15h30</p>
+  </div>
 
-    <div id="delivery" class="delivery">
-      <h2>Delivery</h2>
-      <a href="https://www.ifood.com.br/" class="btn">Peça pelo iFood</a>
-      <a href="https://delivery.yooga.app/" class="btn">Peça pelo Nosso Site</a>
-    </div>
-  </section>
+  <div id="delivery" class="delivery">
+    <h2>Delivery</h2>
+    <a href="https://www.ifood.com.br/" class="btn">Peça pelo iFood</a>
+    <a href="https://delivery.yooga.app/" class="btn">Peça pelo Nosso Site</a>
+  </div>
+</section>
 
-  <footer>
-    <p>© 2026 Bene Grill. Todos os direitos reservados.</p>
-  </footer>
+<footer>
+  © 2026 Bene Grill. Todos os direitos reservados.
+</footer>
+
+<a href="https://wa.me/5571996956712" class="whatsapp" target="_blank">💬</a>
+
+<script>
+  const elements = document.querySelectorAll('.fade-up');
+
+  window.addEventListener('scroll', () => {
+    elements.forEach(el => {
+      const position = el.getBoundingClientRect().top;
+      const screenHeight = window.innerHeight;
+
+      if (position < screenHeight - 100) {
+        el.classList.add('show');
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
